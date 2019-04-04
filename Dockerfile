@@ -1,6 +1,6 @@
-FROM    php:7.1-fpm
+FROM    php:7.2-fpm
 
-LABEL   maintainer="Mage2click"
+LABEL   maintainer="Dmitry Shkoliar @shkoliar"
 
 RUN     apt-get update && apt-get install -y \
             cron \
@@ -15,8 +15,7 @@ RUN     apt-get update && apt-get install -y \
             lsof \
             mysql-client \
             vim \
-            zip \
-            procps
+            zip
 
 RUN     docker-php-ext-configure \
             gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/
@@ -26,10 +25,7 @@ RUN     docker-php-ext-install \
             gd \
             intl \
             mbstring \
-            mcrypt \
             opcache \
-            pcntl \
-            sockets \
             pdo_mysql \
             soap \
             xsl \
