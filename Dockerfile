@@ -1,4 +1,4 @@
-FROM    php:7.2-fpm
+FROM    php:7.1-fpm
 
 LABEL   maintainer="Mage2click"
 
@@ -56,6 +56,11 @@ RUN     apt-get install -y gnupg \
             && mkdir /var/www/.config /var/www/.npm \
             && chown app:app /var/www/.config /var/www/.npm \
             && ln -s /var/www/html/node_modules/grunt/bin/grunt /usr/bin/grunt
+
+RUN     apt-get -y install golang-go \
+           && mkdir /opt/go \
+           && export GOPATH=/opt/go \
+           && go get github.com/mailhog/mhsendmail
 
 RUN     printf '* *\t* * *\tapp\t%s/usr/local/bin/php /var/www/html/update/cron.php\n' >> /etc/crontab
 RUN     printf '* *\t* * *\tapp\t%s/usr/local/bin/php /var/www/html/bin/magento cron:run\n' >> /etc/crontab
