@@ -1,4 +1,4 @@
-FROM    php:7.2-fpm
+FROM    php:7.0-fpm
 
 LABEL   maintainer="Dmitry Shkoliar @shkoliar"
 
